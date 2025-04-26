@@ -24,7 +24,7 @@ const server = http.createServer(async (req, res) => {
     }
 
     const fullStreamContent = Buffer.concat(buffers).toString()
-
+n
     console.log(fullStreamContent)
 
     return res.end(fullStreamContent)
