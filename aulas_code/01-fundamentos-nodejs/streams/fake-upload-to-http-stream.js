@@ -6,7 +6,7 @@ class OneToHundredStream extends Readable{
     _read(){
         const i = this.index++
         setTimeout(() => {
-             if (i > 100){
+             if (i > 5){
                 this.push(null)//?
             } else{
                 const buf = Buffer.from(String(i)) 
@@ -22,4 +22,8 @@ fetch('http://localhost:5555', {
     method: 'POST',  
     body: new OneToHundredStream(),
     duplex: 'half' // IMPORTANTE! no comentário da aula tem sobre a questão de versão
+}).then(response => {
+    return response.text()
+}).then(data => {
+        console.log(data)
 })
