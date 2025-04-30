@@ -3,7 +3,7 @@ import { Database } from './database.js'
 import { json } from './middlewares/json.js'//Type module no package.json exige que eu especifique o tipo de arquivo
 
 const database = new Database()
-                               
+  
 const server = http.createServer(async (request, response) => {
     const { method, url } = request
     
@@ -12,7 +12,7 @@ const server = http.createServer(async (request, response) => {
     if (method == 'GET' && url == '/users')
     {
         const users = database.select('users')
-        
+
         return response.end(JSON.stringify(users))
     }
 

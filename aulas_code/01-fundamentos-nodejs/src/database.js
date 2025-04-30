@@ -1,7 +1,24 @@
 // { "users":[...] }
+import fs from 'node:fs/promises'  //fs/promise usa as novas funcionalidades, enquanto o outro utiliza o mais "antigo" callback
+
+const databasePath = new URL('../db.json', import.meta.url)
 
 export class Database {
     #database = {}
+
+    constructor() {
+        fs.readFile(databasePath, 'utf-8')
+            .then(data => {
+            this.#database = JSON.parse(data)
+        })
+        .catch(() => {
+            this.#persist()
+        })
+    }
+    
+    #persist() {
+        fs.writeFile(databasePath, JSON.stringify(this.#database))
+    }
 
     select(table) {
         const data = this.#database[table] ?? []
@@ -15,6 +32,8 @@ export class Database {
         }else {
             this.#database[table] = [data]
         }
+
+        this.#persist();
 
         return data
     }
