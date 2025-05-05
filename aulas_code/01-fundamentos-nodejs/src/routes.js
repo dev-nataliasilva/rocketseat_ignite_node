@@ -1,12 +1,13 @@
 import { Database } from './database.js'
 import { randomUUID } from 'node:crypto' //UUID = Unique Universal ID
+import { buildingRoutePath } from './utils/build-route-path.js'
                                          //pesquisar: short id por curiosidade
 const database = new Database()
 
 export const routes = [
     {
         method: 'GET',
-        path: '/users',
+        path: buildingRoutePath('/users'),
         handler: (req, res) => {
             const users = database.select('users')
             
@@ -15,7 +16,7 @@ export const routes = [
     },
     {
         method: 'POST',
-        path: '/users',
+        path: buildingRoutePath('/users'),
         handler: (req, res) => {
             const { name, email } = req.body
 
@@ -32,7 +33,7 @@ export const routes = [
     },
     {
         method: 'DELETE',
-        path: '/users',
+        path: buildingRoutePath('/users/:id'),              //: variável dinamico
         handler: (req, res) => {
 
         }
