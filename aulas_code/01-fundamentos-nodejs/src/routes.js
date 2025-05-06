@@ -32,6 +32,20 @@ export const routes = [
        }
     },
     {
+        method: 'PUT',
+        path: buildingRoutePath('/users/:id'),              //: variável dinamico
+        handler: (req, res) => {
+            const { id } = req.params
+            const { name, email } = req.body
+            database.update ('users', id, {
+                name,
+                email
+            })
+
+            return res.writeHead(204).end()
+        }
+    },
+    {
         method: 'DELETE',
         path: buildingRoutePath('/users/:id'),              //: variável dinamico
         handler: (req, res) => {
@@ -41,5 +55,5 @@ export const routes = [
 
             return res.writeHead(204).end()
         }
-    }
+    } 
 ]
