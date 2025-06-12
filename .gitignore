@@ -1,0 +1,44 @@
+# Ignorar node_modules da subpasta do projeto
+02-rotas-e-HTTP/node_modules/
+
+# Ignorar saída de build (ex: dist ou build)
+02-rotas-e-HTTP/dist/
+02-rotas-e-HTTP/build/
+
+# Arquivos de build incremental do TypeScript
+02-rotas-e-HTTP/*.tsbuildinfo
+
+# Arquivos de log
+02-rotas-e-HTTP/logs/
+02-rotas-e-HTTP/*.log
+
+# Arquivos de ambiente
+02-rotas-e-HTTP/.env
+02-rotas-e-HTTP/.env.*
+
+# Cobertura de testes
+02-rotas-e-HTTP/coverage/
+02-rotas-e-HTTP/.nyc_output/
+
+# PIDs e arquivos do PM2 (se usar)
+02-rotas-e-HTTP/*.pid
+02-rotas-e-HTTP/*.seed
+02-rotas-e-HTTP/pids/
+02-rotas-e-HTTP/*.pid.lock
+
+# Arquivos de lock de pacotes (opcional ignorar)
+02-rotas-e-HTTP/package-lock.json
+02-rotas-e-HTTP/pnpm-lock.yaml
+# (ou remova se quiser versionar esses arquivos)
+
+# Ignorar IDEs e editores (geral)
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Ignorar arquivos de sistema
+.DS_Store
+Thumbs.db
