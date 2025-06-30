@@ -1,3 +1,6 @@
+# Database
+db/app.db
+
 # Node modules
 node_modules/
 
