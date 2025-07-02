@@ -1,32 +1,16 @@
-import { env } from './env'
-import fastify from 'fastify'
-import { knex } from './database'
-import crypto from 'node:crypto'
+import fastify from 'fastify';
+import { transactionsRoutes } from './routes/transactions';
 
+const app = fastify({ logger: true });
 
-const app = fastify()
+app.register(transactionsRoutes, {
+  prefix: 'transactions',
+});
 
-app.get('/get', async () => {
-    const transaction = await knex('transactions').select('*')
+app.listen({ port: 3333 }).then(() => {
+  console.log('HTTP server running!');
+});
 
-    return transaction
-})
-
-app.post('/insert', async () => {
-    const transaction = await knex('transactions').insert({
-        id: crypto.randomUUID(),
-        title: 'Transação de teste',
-        amount: 1000
-    }).returning('*')
-
-    return transaction
-})
-
-app.listen({
-    port: env.PORT
-}).then(() => {
-    console.log('HTTP Server Running!')
-})
 
 //npx tsx src/server.ts
 //npm run dev
