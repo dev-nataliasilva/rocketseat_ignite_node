@@ -1,9 +1,12 @@
-//definição de tipos
-//não terá código javascript, apenas typescript
-import { Knex } from 'knex'
-
-declare module 'knex/type/tables' {
-    export interface Tables {
-        transactions: string
+// definição de tipos
+// não terá código javascript, apenas typescript
+declare module 'knex/types/tables' {
+  interface Tables {
+    transactions: {
+      id: string
+      title: string
+      amount: number
+      type: 'credit' | 'debit'
     }
+  }
 }

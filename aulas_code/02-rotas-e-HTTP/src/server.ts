@@ -1,20 +1,20 @@
-import fastify from 'fastify';
-import { transactionsRoutes } from './routes/transactions';
+import fastify from 'fastify'
+import { env } from './env'
+import { transactionsRoutes } from './routes/transactions'
 
-const app = fastify({ logger: true });
+const app = fastify()
 
 app.register(transactionsRoutes, {
   prefix: 'transactions',
-});
+})
 
-app.listen({ port: 3333 }).then(() => {
-  console.log('HTTP server running!');
-});
+app.listen({ port: env.PORT }).then(() => {
+  console.log('HTTP server running!')
+})
 
+// npx tsx src/server.ts
+// npm run dev
 
-//npx tsx src/server.ts
-//npm run dev
+// EcmaScript Lint >>
 
-//EcmaScript Lint >>
-
-//Variaveis de ambiente
+// Variaveis de ambiente
