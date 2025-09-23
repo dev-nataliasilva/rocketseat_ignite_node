@@ -7,6 +7,10 @@ const app = fastify()
 
 app.register(cookie)
 
+app.addHook('preHandler', async (request, reply) => {
+  console.log(`[${request.method}] ${request.url}`)
+})
+
 app.register(transactionsRoutes, {
   prefix: 'transactions',
 })
@@ -14,6 +18,12 @@ app.register(transactionsRoutes, {
 app.listen({ port: env.PORT }).then(() => {
   console.log('HTTP server running!')
 })
+
+
+
+
+
+
 
 // npx tsx src/server.ts
 // npm run dev
