@@ -4,14 +4,24 @@ import { randomUUID } from 'node:crypto'
 import { FastifyInstance } from 'fastify'
 import { checkSessionIdExists } from '../middlewares/check-session-id-exists'
 
+//TESTES
+//unitários: unidade da sua aplicação
+//integração: comunicação entre duas ou mais unidades
+//e2e - ponta a ponta: simulam um usuário operando na nossa aplicação
+//  Front-end: abre a página de login, digite o texto ...
+//  Back-end: chamadas http, websockets
+
+//Pirâmide de testes: E2E (não dependem de nenhuma tecnologia ou arquitetura de software)
+
+
 // Cookies -> formas de manter contexto entre requisições
 //"plugin" / parte separada
 // Context específico
 export async function transactionsRoutes(app: FastifyInstance) {
   //handler global / todas as rotas desse plugin vão disparar
-  app.addHook('preHandler', async (request, reply) => {
-    console.log(`[${request.method}] ${request.url}`)
-  })
+  // app.addHook('preHandler', async (request, reply) => {
+  //   console.log(`[${request.method}] ${request.url}`)
+  // })
   
   app.get(
     '/',
