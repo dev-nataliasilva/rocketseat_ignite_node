@@ -1,6 +1,7 @@
 # Database
 db/app.db
 
+
 # Node modules
 node_modules/
 
@@ -18,6 +19,7 @@ logs/
 # Env files
 .env
 .env.*
+.env.test
 
 # Coverage reports
 coverage/
